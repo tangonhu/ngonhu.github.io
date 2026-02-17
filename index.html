@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiệp Mời Đãi Lính - Tạ Ngô Như</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at center,#ff0000,#990000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Card */
+.card{
+    background:linear-gradient(180deg,#fff8dc,#fff);
+    width:370px;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.6);
+    border:5px solid gold;
+    z-index:2;
+    animation:fadeIn 1.5s ease;
+}
+
+h1{
+    color:#b30000;
+}
+
+.name{
+    font-size:22px;
+    font-weight:bold;
+    color:#cc0000;
+    margin:10px 0;
+}
+
+.info{
+    margin:8px 0;
+    font-size:15px;
+}
+
+.highlight{
+    font-weight:bold;
+    color:#cc0000;
+}
+
+/* Button */
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    background:gold;
+    color:#b30000;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffcc00;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* Hoa rơi */
+.flower{
+    position:absolute;
+    top:-50px;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Pháo hoa */
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:gold;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    0%{transform:scale(1); opacity:1;}
+    100%{transform:scale(8); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🧧 THIỆP MỜI ĐÃI LÍNH 🧧</h1>
+
+    <p>Trân trọng kính mời</p>
+
+    <div class="name">TẠ NGÔ NHƯ</div>
+
+    <p class="highlight">🎉 TIỆC LÊN ĐƯỜNG NHẬP NGŨ ĐẦU XUÂN 🎉</p>
+
+    <p class="info">🕘 9h00 sáng</p>
+    <p class="info">📅 Ngày 21 tháng 2 (Mùng 5 Tết)</p>
+    <p class="info">📍 Tại nhà riêng</p>
+
+    <p class="info">Đầu xuân sum họp – Nâng ly tiễn bạn lên đường 💪</p>
+
+    <button onclick="alert('Mùng 5 nhớ qua chung vui với Tạ Ngô Như nhé! 🧨')">
+        XÁC NHẬN THAM DỰ
+    </button>
+</div>
+
+<!-- Nhạc nền (có thể thay link mp3 khác) -->
+<audio id="music" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Tạo hoa rơi
+for(let i=0;i<20;i++){
+    let flower=document.createElement("div");
+    flower.className="flower";
+    flower.innerHTML="🌼";
+    flower.style.left=Math.random()*100+"vw";
+    flower.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(flower);
+}
+
+// Pháo hoa random
+setInterval(()=>{
+    let fire=document.createElement("div");
+    fire.className="firework";
+    fire.style.left=Math.random()*100+"vw";
+    fire.style.top=Math.random()*80+"vh";
+    document.body.appendChild(fire);
+    setTimeout(()=>{fire.remove();},1000);
+},1500);
+
+// Fix autoplay trên mobile
+document.body.addEventListener("click",()=>{
+    document.getElementById("music").play();
+});
+</script>
+
+</body>
+</html>
